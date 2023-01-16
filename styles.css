@@ -29,6 +29,11 @@ p {
     font-weight: bold;
 }
 
+.new-container button:hover {
+    background-color: rgb(52, 143, 200);
+    cursor: pointer;
+}
+
 .form-container {
     border: 2px solid red;
     display: flex;
@@ -54,6 +59,11 @@ input {
     border-style: none;
     border: 1px solid gray;
     padding: 5px 10px;
+    width: 50%;
+}
+
+input[id="read"] {
+    width: auto;
 }
 
 .lib-submit {
@@ -63,6 +73,11 @@ input {
     background-color: rgb(79, 145, 220);
     color: white;
     font-weight: bold;
+}
+
+.lib-submit:hover {
+    background-color: rgb(43, 114, 195);
+    cursor: pointer;
 }
 
 .table-container {
