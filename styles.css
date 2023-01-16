@@ -80,6 +80,15 @@ input[id="read"] {
     cursor: pointer;
 }
 
+.clear {
+    border-style: none;
+    padding: 7px 20px;
+    border-radius: 30px;
+    background-color: rgb(255, 102, 102);
+    font-weight: bold;
+    color: white;
+}
+
 .table-container {
     border: 2px solid green;
     display: flex;
