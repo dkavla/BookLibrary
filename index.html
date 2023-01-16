@@ -8,25 +8,75 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1 class="app-name">LIBRARY OF WONDERS</h1>
+    <!-- First container with button for toggling inputs display -->
     <div class="new-container">
-        <button>NEW BOOK</button>
+        <button class="add-book">NEW BOOK</button>
+        <p>
+            This button is used to toggle the inputs display.
+            If you want to add a new book to the library just 
+            press the above button, add the necessary information, 
+            and click submit. This will add the book info to the 
+            library below. If you want to remove a row from the table 
+            just check the "Remove" checkbox in final column and then 
+            the "Remove Row" button to remove the selected rows.
+        </p>
     </div>
+
+    <!-- Second container for input fields -->
     <div class="form-container">
-        <div>
-            <label for="title">Title: <input type="text" id="title"></label>
+        <div class="inputs-container">
+            <div>
+                <label for="title">Title: <input type="text" id="title"></label>
+            </div>
+            <div>
+                <label for="author">Author: <input type="text" id="author"></label>
+            </div>
+            <div>
+                <label for="pages"># of Pages: <input type="number" id="pages"></label>
+            </div>
+            <div>
+                <label for="year">Year: <input type="number" id="year"></label>
+            </div>
+            <div>
+                <label for="read"> Read? <input type="checkbox" name="read" id="read"></label>
+            </div>
+            <div>
+                <button type="submit" class="lib-submit">Add to Library</button>
+            </div>
         </div>
-        <div>
-            <label for="author">Author: <input type="text" id="author"></label>
-        </div>
-        <div>
-            <label for="pages"># of Pages: <input type="number" id="pages"></label>
-        </div>
-        <div>
-            <label for="year">Year: <input type="text" id="year"></label>
-        </div>
-        <div>
-            <label for="read"> Read? <input type="checkbox" name="read" id="read"></label>
-        </div>
+    </div>
+
+    <!-- Library container -->
+    <div class="table-container">
+        <table class="library">
+            <tbody>
+                <tr>
+                    <th>TITLE</th>
+                    <th>AUTHOR</th>
+                    <th># OF PAGES</th>
+                    <th>RELEASE YEAR</th>
+                    <th>READ</th>
+                    <th>REMOVE</th>
+                </tr>
+                <tr>
+                    <td>The Hobbit</td>
+                    <td>J.R.R. Tolkien</td>
+                    <td>300</td>
+                    <td>1937</td>
+                    <td>Yes</td>
+                    <td><input type="checkbox" name="remove" class="remove"></td>
+                </tr>
+                <tr>
+                    <td>The Godfather</td>
+                    <td>Mario Puzo</td>
+                    <td>433</td>
+                    <td>1969</td>
+                    <td>No</td>
+                    <td><input type="checkbox" name="remove" class="remove"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 <script src="app.js"></script>
