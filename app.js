@@ -1,5 +1,5 @@
 
-/* OBJECTS */
+/* LIBRARY ARRAY */
 let library = [
     {
         title: "The Hobbit",
@@ -41,7 +41,45 @@ function addBookToLibrary(title, author, pages, year, read) {
     }
 }
 
+function displayTable() {
+    table.innerHTML = '';
+    library.forEach(obj => {
+        let tableRow = document.createElement("tr");
 
+        let titleCol = document.createElement("td");
+        let authorCol = document.createElement("td");
+        let pagesCol = document.createElement("td");
+        let yearCol = document.createElement("td");
+        let readCol = document.createElement("td");
+        let removeCol = document.createElement("td");
+        let removeBtn = document.createElement("input");
+
+        removeBtn.type = "checkbox";
+        removeBtn.name = "remove";
+        removeBtn.id = "remove";
+
+        titleCol.textContent = obj.title;
+        authorCol.textContent = obj.author;
+        pagesCol.textContent = obj.pages;
+        yearCol.textContent = obj.year;
+        if(obj.read) {
+            readCol.textContent = "Yes";
+        } else {
+            readCol.textContent = "No";
+        }
+
+        removeCol.appendChild(removeBtn)
+
+        tableRow.appendChild(titleCol);
+        tableRow.appendChild(authorCol);
+        tableRow.appendChild(pagesCol);
+        tableRow.appendChild(yearCol);
+        tableRow.appendChild(readCol);
+        tableRow.appendChild(removeCol);
+
+        table.appendChild(tableRow);
+    })
+}
 
 
 /* VARIABLES */
@@ -67,6 +105,7 @@ const pagesInput = document.querySelector("#pages");
 const yearInput = document.querySelector("#year");
 const readInput = document.getElementById("read");
 
+// tracker for seeing if read checkbox is checked
 let isChecked = false;
 
 const clearInputs = document.querySelector(".clear");
@@ -89,6 +128,7 @@ submitInfo.addEventListener("click", () => {
         pagesInput.value,
         yearInput.value,
         isChecked);
+    displayTable();
 })
 
 readInput.addEventListener("click", () => {
@@ -112,7 +152,7 @@ clearInputs.addEventListener("click", () => {
 })
 
 
-
+displayTable();
 
 
 
