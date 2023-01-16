@@ -4,25 +4,89 @@
     margin: 0;
 }
 
+.app-name {
+    padding: 10px 20px;
+}
+
+p {
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
 .new-container {
     border: 2px solid black;
     padding: 10px;
+}
+
+.new-container button {
+    border-style: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: rgb(69, 152, 203);
+    color:rgb(228, 233, 237);
+    font-weight: bold;
 }
 
 .form-container {
     border: 2px solid red;
     display: flex;
     flex-direction: column;
+    background-color: rgb(255, 204, 153)
 }
 
 .form-container div {
     padding: 5px;
 }
 
+/* Initially set input section to be hidden */
+.inputs-container {
+    display: none;
+}
+
+label {
+    font-weight: bold;
+}
+
 input {
     border-radius: 40px;
     border-style: none;
     border: 1px solid gray;
-    padding: 5px 10px
+    padding: 5px 10px;
 }
+
+.lib-submit {
+    border-style: none;
+    padding: 7px 20px;
+    border-radius: 30px;
+    background-color: rgb(79, 145, 220);
+    color: white;
+    font-weight: bold;
+}
+
+.table-container {
+    border: 2px solid green;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 10px;
+    border: 0.5px solid;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+
 
