@@ -89,6 +89,16 @@ input[id="read"] {
     color: white;
 }
 
+.remove-row {
+    border-style: none;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 7px 20px;
+    background-color: rgb(255, 102, 102);
+    font-weight: bold;
+    color: rgb(254, 254, 254);
+}
+
 .table-container {
     border: 2px solid green;
     display: flex;
