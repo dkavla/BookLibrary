@@ -151,7 +151,6 @@ clearInputs.addEventListener("click", () => {
     isChecked = false;
 })
 
-
 displayTable();
 
 
