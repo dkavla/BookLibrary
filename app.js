@@ -33,18 +33,16 @@ function Book(title, author, pages, year, read) {
     this.read = read
 }
 
-function addBookToLibrary() {
-    let title = prompt("Enter title of book")
-    let author = prompt("Enter the author of the book")
-    let pages = parseInt(prompt("Enter the # of pages: "))
-    let year = parseInt(prompt("Enter the year of release: "))
-    let read = prompt("Enter 1 if read and 0 if not: ")
-    if(read == "1") {
-        library.push(new Book(title, author, pages, year, 1))
+function addBookToLibrary(title, author, pages, year, read) {
+    if(read) {
+        library.push(new Book(title, author, pages, year, true))
     } else {
-        library.push(new Book(title, author, pages, year, 0))
+        library.push(new Book(title, author, pages, year, false))
     }
 }
+
+
+
 
 /* VARIABLES */
 // button used to toggle inputs section to either display or hide
@@ -56,8 +54,20 @@ const inputsDisplay = document.querySelector(".inputs-container");
 // tracks if inputs are showing currently or not
 let inputsAreDisplayed = false; 
 
-const submitInfo = document.querySelector(".lib-submit")
+// button used to submit the input values
+const submitInfo = document.querySelector(".lib-submit");
 
+// tbody part of the table
+const table = document.querySelector(".lib-body");
+
+// input fields
+const titleInput = document.querySelector("#title");
+const authorInput = document.querySelector("#author");
+const pagesInput = document.querySelector("#pages");
+const yearInput = document.querySelector("#year");
+const readInput = document.getElementById("read");
+
+let isChecked = false;
 
 /* EVENT LISTENERS */
 newBookBtn.addEventListener("click", () => {
@@ -70,6 +80,24 @@ newBookBtn.addEventListener("click", () => {
     }
 });
 
+submitInfo.addEventListener("click", () => {
+    addBookToLibrary(
+        titleInput.value, 
+        authorInput.value, 
+        pagesInput.value,
+        yearInput.value,
+        isChecked);
+})
+
+readInput.addEventListener("click", () => {
+    if(isChecked) {
+        isChecked = false;
+        readInput.value = "off";
+    } else {
+        isChecked = true;
+        readInput.value = "on"
+    }
+})
 
 
 
