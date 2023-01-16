@@ -69,6 +69,8 @@ const readInput = document.getElementById("read");
 
 let isChecked = false;
 
+const clearInputs = document.querySelector(".clear");
+
 /* EVENT LISTENERS */
 newBookBtn.addEventListener("click", () => {
     if (inputsAreDisplayed) {
@@ -99,6 +101,15 @@ readInput.addEventListener("click", () => {
     }
 })
 
+clearInputs.addEventListener("click", () => {
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    yearInput.value = "";
+    readInput.value = "off";
+    readInput.checked = false;
+    isChecked = false;
+})
 
 
 
