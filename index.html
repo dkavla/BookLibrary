@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="app-name">LIBRARY OF WONDERS</h1>
+    <h1 class="app-name">LIBRARY OASIS</h1>
     <!-- First container with button for toggling inputs display -->
     <div class="new-container">
         <button class="add-book">NEW BOOK</button>
@@ -39,7 +39,8 @@
                 <label for="year">Year: <input type="number" id="year"></label>
             </div>
             <div>
-                <label for="read"> Read? <input type="checkbox" name="read" id="read"></label>
+                <label for="read">Read?</label>
+                <input type="checkbox" name="read" id="read">
             </div>
             <div>
                 <button type="submit" class="lib-submit">Add to Library</button>
@@ -50,7 +51,7 @@
     <!-- Library container -->
     <div class="table-container">
         <table class="library">
-            <tbody>
+            <thead>
                 <tr>
                     <th>TITLE</th>
                     <th>AUTHOR</th>
@@ -59,6 +60,8 @@
                     <th>READ</th>
                     <th>REMOVE</th>
                 </tr>
+            </thead>
+            <tbody class="lib-body">
                 <tr>
                     <td>The Hobbit</td>
                     <td>J.R.R. Tolkien</td>
