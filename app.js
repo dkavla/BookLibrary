@@ -1,4 +1,5 @@
 
+/* OBJECTS */
 let library = [
     {
         title: "The Hobbit",
@@ -23,6 +24,7 @@ let library = [
     }
 ];
 
+/* FUNCTIONS AND CONSTRUCTORS */
 function Book(title, author, pages, year, read) {
     this.title = title
     this.author = author
@@ -43,4 +45,40 @@ function addBookToLibrary() {
         library.push(new Book(title, author, pages, year, 0))
     }
 }
+
+/* VARIABLES */
+// button used to toggle inputs section to either display or hide
+const newBookBtn = document.querySelector(".add-book");
+
+// connected to div container holding the input fields
+const inputsDisplay = document.querySelector(".inputs-container");
+
+// tracks if inputs are showing currently or not
+let inputsAreDisplayed = false; 
+
+const submitInfo = document.querySelector(".lib-submit")
+
+
+/* EVENT LISTENERS */
+newBookBtn.addEventListener("click", () => {
+    if (inputsAreDisplayed) {
+        inputsDisplay.style.display = "none";
+        inputsAreDisplayed = false;
+    } else {
+        inputsDisplay.style.display = "block";
+        inputsAreDisplayed = true;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
