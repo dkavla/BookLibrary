@@ -12,65 +12,38 @@
     <!-- First container with button for toggling inputs display -->
     <div class="new-container">
         <button class="add-book">NEW BOOK</button>
-        <p>
-            This button is used to toggle the inputs display.
-            If you want to add a new book to the library just 
-            press the above button, add the necessary information, 
-            and click submit. This will add the book info to the 
-            library below. If you want to remove a row from the table 
-            just check the "Remove" checkbox in final column and then 
-            the "Remove Row" button to remove the selected rows.
-        </p>
     </div>
 
     <!-- Second container for input fields -->
     <div class="form-container">
         <div class="inputs-container">
             <div>
-                <label for="title">Title: <input type="text" id="title"></label>
+                <label for="title">Title: <input type="text" id="title" class="book-input"></label>
             </div>
             <div>
-                <label for="author">Author: <input type="text" id="author"></label>
+                <label for="author">Author: <input type="text" id="author" class="book-input"></label>
             </div>
             <div>
-                <label for="pages"># of Pages: <input type="number" id="pages"></label>
+                <label for="pages"># of Pages: <input type="number" id="pages" class="book-input"></label>
             </div>
             <div>
-                <label for="year">Year: <input type="number" id="year"></label>
+                <label for="year">Year: <input type="number" id="year" class="book-input"></label>
             </div>
             <div>
-                <label for="read">Read?</label>
-                <input type="checkbox" name="read" id="read">
+                <label for="read">Read (mark if Yes) </label>
+                <input type="checkbox" name="read" id="read" class="book-input">
             </div>
             <div>
-                <button type="submit" class="lib-submit">Add to Library</button>
+                <button type="submit" class="add">Add to Library</button>
             </div>
-            <div>
+            <!-- <div>
                 <button class="clear">Clear Input Fields</button>
-            </div>
+            </div> -->
         </div>
     </div>
 
-    <!-- Library container -->
-    <div class="remove-container">
-        <button type="submit" class="remove-row">Remove Rows</button>
-    </div>
-    <div class="table-container">
-        <table class="library">
-            <thead>
-                <tr>
-                    <th>TITLE</th>
-                    <th>AUTHOR</th>
-                    <th># OF PAGES</th>
-                    <th>RELEASE YEAR</th>
-                    <th>READ</th>
-                    <th>REMOVE</th>
-                </tr>
-            </thead>
-            <tbody class="lib-body">
-                
-            </tbody>
-        </table>
+    <div class="lib-container">
+        
     </div>
 </body>
 <script src="app.js"></script>
