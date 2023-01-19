@@ -4,20 +4,22 @@
     margin: 0;
 }
 
+body {
+    background-color: aliceblue;
+}
+
+/* Title div styling */
 .app-name {
+    background-color: #B266FF;
     padding: 10px 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(228, 233, 237)
 }
 
-p {
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px solid black;
-    margin: 10px;
-}
-
+/* New Book button container styling */
 .new-container {
-    border: 2px solid black;
     padding: 10px;
+    background-color: rgb(153, 206, 255);
 }
 
 .new-container button {
@@ -34,11 +36,19 @@ p {
     cursor: pointer;
 }
 
+p {
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Form container stylings */
 .form-container {
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 204, 153)
+    background-color: rgb(255, 204, 153);
 }
 
 .form-container div {
@@ -62,11 +72,13 @@ input {
     width: 50%;
 }
 
+
 input[id="read"] {
     width: auto;
 }
 
-.lib-submit {
+
+.add {
     border-style: none;
     padding: 7px 20px;
     border-radius: 30px;
@@ -75,50 +87,61 @@ input[id="read"] {
     font-weight: bold;
 }
 
-.lib-submit:hover {
+.add:hover {
     background-color: rgb(43, 114, 195);
     cursor: pointer;
 }
 
-.clear {
+
+/* Table container styling */
+.lib-container {
+    display: grid;
+    overflow: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    padding: 20px;
+}
+
+
+.book {
+    border: 2px solid rgb(160, 175, 138);
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 5px 10px 20px rgb(212, 210, 210);
+    background-color: rgb(255, 204, 153);
+}
+
+.book div {
+    background-color: rgb(255, 204, 153);
+    color: rgb(15, 14, 14);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.book button {
     border-style: none;
-    padding: 7px 20px;
-    border-radius: 30px;
-    background-color: rgb(255, 102, 102);
+    border-radius: 40px;
+    margin: 5px;
     font-weight: bold;
-    color: white;
+    cursor: pointer;
 }
 
-.remove-row {
-    border-style: none;
-    border-radius: 30px;
-    margin: 20px;
-    padding: 7px 20px;
-    background-color: rgb(255, 102, 102);
-    font-weight: bold;
-    color: rgb(254, 254, 254);
+#readBtn {
+    padding: 5px 12px;
+    margin-left: 0;
+
 }
 
-.table-container {
-    border: 2px solid green;
-    display: flex;
-    justify-content: center;
+#removeBtn {
+    padding: 5px 12px;
+    background-color: crimson;
+    color:rgb(228, 233, 237);
 }
 
-table {
-    width: 100%;
-    border-spacing: 0;
+#removeBtn:hover {
+    background-color: rgb(191, 19, 53);
 }
 
-th, td {
-    padding: 10px;
-    border: 0.5px solid;
-}
-
-td {
-    text-align: center;
-    vertical-align: middle;
-}
 
 
 
