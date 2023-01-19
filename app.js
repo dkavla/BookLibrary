@@ -1,162 +1,173 @@
+const newBtn = document.querySelector(".add-book");
+newBtn.addEventListener("click", showInputField);
 
-/* LIBRARY ARRAY */
-let library = [
+const addBtn = document.querySelector(".add");
+addBtn.addEventListener("click", addBookToLibrary);
+
+const read = document.getElementById("read");
+let isRead = false;
+read.addEventListener("click", () => {
+    if(isRead) {
+        read.checked = false;
+        isRead = false;
+    } else {
+        read.checked = true;
+        isRead = true;
+    }
+})
+
+const inputs = document.querySelectorAll('.book-input');
+const inputsForm = document.querySelector(".inputs-container");
+let myLibrary = [
     {
-        title: "The Hobbit",
-        author: "J.R.R. Tolkien",
-        pages: 300,
-        year: 1937,
-        read: false
-    },
-    {
-        title: "The Godfather",
-        author: "Mario Puzo",
-        pages: 433,
-        year: 1969,
-        read: false
-    },
-    {
-        title: "Crime & Punishment",
+        title: "Crime and Punishment",
         author: "Fyodor Dostoevsky",
         pages: 537,
-        year: 1866,
+        year: 1953,
         read: false
-    }
+    },
+    {
+        title: "Statistics and Finance: An Introduction",
+        author: "David Ruppert",
+        pages: 437,
+        year: 2004,
+        read: true
+    },
+    {
+        title: "Option Volatility & Pricing",
+        author: "Sheldon Natenberg",
+        pages: 469,
+        year: 1994,
+        read: true
+    },
+
 ];
+let newBook;
 
-/* FUNCTIONS AND CONSTRUCTORS */
+// constructor
 function Book(title, author, pages, year, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.year = year
-    this.read = read
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.year = year;
+    this.read = read;
 }
 
-function addBookToLibrary(title, author, pages, year, read) {
-    if(read) {
-        library.push(new Book(title, author, pages, year, true))
-    } else {
-        library.push(new Book(title, author, pages, year, false))
+// adds the newly created book to myLibrary
+function addBookToLibrary() {
+    newBook = new Book(
+        inputs[0].value,
+        inputs[1].value,
+        inputs[2].value,
+        inputs[3].value,
+        inputs[4].checked
+    )
+    myLibrary.push(newBook);
+    render();
+    clearInput();
+}
+
+// loads the books to the container
+function render() {
+    const lib = document.querySelector(".lib-container");
+    const cards = document.querySelectorAll('.book');
+    // clear the library book display container
+    cards.forEach(book => {
+        lib.removeChild(book)
+    });
+
+    for (let i=0; i < myLibrary.length; i++)
+    {
+        createBook(myLibrary[i]);
     }
 }
 
-function displayTable() {
-    table.innerHTML = '';
-    library.forEach(obj => {
-        let tableRow = document.createElement("tr");
+function createBook(item) {
+    const lib = document.querySelector(".lib-container");
 
-        let titleCol = document.createElement("td");
-        let authorCol = document.createElement("td");
-        let pagesCol = document.createElement("td");
-        let yearCol = document.createElement("td");
-        let readCol = document.createElement("td");
-        let removeCol = document.createElement("td");
-        let removeBtn = document.createElement("input");
+    const card = document.createElement('div');
+    const titleDiv = document.createElement('div');
+    const authorDiv = document.createElement('div');
+    const pageDiv = document.createElement('div');
+    const yearDiv = document.createElement('div');
+    const removeBtn = document.createElement('button');
+    const readBtn = document.createElement('button');
 
-        removeBtn.type = "checkbox";
-        removeBtn.name = "remove";
-        removeBtn.id = "remove";
+    card.className = 'book';
+    card.classList.add('book');
+    card.setAttribute("id", myLibrary.indexOf(item));
+    
+    titleDiv.textContent = `${item.title}`;
+    titleDiv.classList.add('title');
+    card.appendChild(titleDiv);
 
-        titleCol.textContent = obj.title;
-        authorCol.textContent = obj.author;
-        pagesCol.textContent = obj.pages;
-        yearCol.textContent = obj.year;
-        if(obj.read) {
-            readCol.textContent = "Yes";
+    authorDiv.textContent = `By ${item.author}`;
+    authorDiv.classList.add('author');
+    card.appendChild(authorDiv);
+
+    pageDiv.textContent = `${item.pages} pages`;
+    pageDiv.classList.add('pages');
+    card.appendChild(pageDiv);
+
+    yearDiv.textContent = `Published in ${item.year}`;
+    yearDiv.classList.add('year');
+    card.appendChild(yearDiv);
+    
+    readBtn.setAttribute("id", "readBtn");
+    card.appendChild(readBtn);
+    if(item.read == true) {
+        readBtn.textContent = "Read";
+        readBtn.style.backgroundColor = '#1CD867';
+    } else {
+        readBtn.textContent = 'Not Read';
+        readBtn.style.backgroundColor = '#EC2143';
+    }
+
+    // add click listener so that the button changes to Read or Not Read
+    readBtn.addEventListener("click", () => {
+        item.read = !item.read;
+        if(item.read == true) {
+            readBtn.textContent = "Read";
+            readBtn.style.backgroundColor = '#1CD867';
         } else {
-            readCol.textContent = "No";
+            readBtn.textContent = 'Not Read';
+            readBtn.style.backgroundColor = '#EC2143';
         }
+    });
 
-        removeCol.appendChild(removeBtn)
+    removeBtn.textContent = "Remove";
+    removeBtn.setAttribute("id", "removeBtn");
+    card.appendChild(removeBtn);
 
-        tableRow.appendChild(titleCol);
-        tableRow.appendChild(authorCol);
-        tableRow.appendChild(pagesCol);
-        tableRow.appendChild(yearCol);
-        tableRow.appendChild(readCol);
-        tableRow.appendChild(removeCol);
+    // add click listener so that it removes button from 
+    removeBtn.addEventListener("click", () => {
+        myLibrary.splice(myLibrary.indexOf(item), 1);
+        render(); // reloads the books to library container
+    });
 
-        table.appendChild(tableRow);
-    })
+    // add the book to the library
+    lib.appendChild(card);
+
 }
 
+// displays the container of input fields
+function showInputField() {
+    inputsForm.style.display = "block";
+};
 
-/* VARIABLES */
-// button used to toggle inputs section to either display or hide
-const newBookBtn = document.querySelector(".add-book");
+function hideInputField(){
+    inputsForm.style.display = "none";
+}
 
-// connected to div container holding the input fields
-const inputsDisplay = document.querySelector(".inputs-container");
-
-// tracks if inputs are showing currently or not
-let inputsAreDisplayed = false; 
-
-// button used to submit the input values
-const submitInfo = document.querySelector(".lib-submit");
-
-// tbody part of the table
-const table = document.querySelector(".lib-body");
-
-// input fields
-const titleInput = document.querySelector("#title");
-const authorInput = document.querySelector("#author");
-const pagesInput = document.querySelector("#pages");
-const yearInput = document.querySelector("#year");
-const readInput = document.getElementById("read");
-
-// tracker for seeing if read checkbox is checked
-let isChecked = false;
-
-const clearInputs = document.querySelector(".clear");
-
-/* EVENT LISTENERS */
-newBookBtn.addEventListener("click", () => {
-    if (inputsAreDisplayed) {
-        inputsDisplay.style.display = "none";
-        inputsAreDisplayed = false;
-    } else {
-        inputsDisplay.style.display = "block";
-        inputsAreDisplayed = true;
+// clears input screen
+function clearInput() {
+    for (let i=0; i < inputs.length - 1; i++)
+    {
+        inputs[i].value = "";
     }
-});
+    inputs[inputs.length - 1].checked = false;
+    isRead = false;
+    hideInputField();
+}
 
-submitInfo.addEventListener("click", () => {
-    addBookToLibrary(
-        titleInput.value, 
-        authorInput.value, 
-        pagesInput.value,
-        yearInput.value,
-        isChecked);
-    displayTable();
-})
-
-readInput.addEventListener("click", () => {
-    if(isChecked) {
-        isChecked = false;
-        readInput.value = "off";
-    } else {
-        isChecked = true;
-        readInput.value = "on"
-    }
-})
-
-clearInputs.addEventListener("click", () => {
-    titleInput.value = "";
-    authorInput.value = "";
-    pagesInput.value = "";
-    yearInput.value = "";
-    readInput.value = "off";
-    readInput.checked = false;
-    isChecked = false;
-})
-
-displayTable();
-
-
-
-
-
-
-
-
+render();
