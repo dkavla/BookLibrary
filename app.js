@@ -1,10 +1,10 @@
-const newBtn = document.querySelector(".add-book");
+const newBtn = document.querySelector(".add-book"); // the button for inputting new books
 newBtn.addEventListener("click", showInputField);
 
-const addBtn = document.querySelector(".add");
+const addBtn = document.querySelector(".add"); // button to add new book to library
 addBtn.addEventListener("click", addBookToLibrary);
 
-const read = document.getElementById("read");
+const read = document.getElementById("read"); // button for checking if book was read
 let isRead = false;
 read.addEventListener("click", () => {
     if(isRead) {
@@ -25,22 +25,7 @@ let myLibrary = [
         pages: 537,
         year: 1953,
         read: false
-    },
-    {
-        title: "Statistics and Finance: An Introduction",
-        author: "David Ruppert",
-        pages: 437,
-        year: 2004,
-        read: true
-    },
-    {
-        title: "Option Volatility & Pricing",
-        author: "Sheldon Natenberg",
-        pages: 469,
-        year: 1994,
-        read: true
-    },
-
+    }
 ];
 let newBook;
 
