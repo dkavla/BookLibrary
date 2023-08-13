@@ -1,3 +1,47 @@
+/* 
+    August 13, 2023 
+    Refactor constructor function into a class block
+    Allow for class to accept the same parameters and have a constructor
+    Set property fields to be private and provide getters to retrieve them
+
+*/
+class Book {
+    #title
+    #author
+    #pages
+    #year
+    #read
+    constructor(title, author, pages, year, read) {
+        this.#title = title;
+        this.#author = author;
+        this.#pages = pages;
+        this.#year = year;
+        this.#read = read;
+    }
+
+    getTitle() {
+        return this.#title
+    }
+
+    getAuthor() {
+        return this.#author
+    }
+
+    getPages() {
+        return this.#pages
+    }
+
+    getYear() {
+        return this.#year
+    }
+
+    getRead() {
+        return this.#read
+    }
+
+}
+
+
 const newBtn = document.querySelector(".add-book"); // the button for inputting new books
 newBtn.addEventListener("click", showInputField);
 
@@ -31,13 +75,17 @@ let myLibrary = [
 let newBook;
 
 // constructor
-function Book(title, author, pages, year, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.year = year;
-    this.read = read;
+/*
+ * The constructor here is replaced with a class Book
+
+    function Book(title, author, pages, year, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.year = year;
+        this.read = read;
 }
+*/
 
 // adds the newly created book to myLibrary
 function addBookToLibrary() {
@@ -68,6 +116,7 @@ function render() {
     }
 }
 
+// Creates a book div and adds the info users provide into the card.
 function createBook(item) {
     const lib = document.querySelector(".lib-container");
 
@@ -81,7 +130,7 @@ function createBook(item) {
 
     card.className = 'book';
     card.classList.add('book');
-    card.setAttribute("id", myLibrary.indexOf(item));
+    card.setAttribute("id", myLibrary.indexOf(item)); // sets the id of card to the index of the book in the library array
     
     titleDiv.textContent = `${item.title}`;
     titleDiv.classList.add('title');
