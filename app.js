@@ -27,6 +27,7 @@ let myLibrary = [
         read: false
     }
 ];
+
 let newBook;
 
 // constructor
