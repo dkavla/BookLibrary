@@ -2,41 +2,36 @@
     August 13, 2023 
     Refactor constructor function into a class block
     Allow for class to accept the same parameters and have a constructor
-    Set property fields to be private and provide getters to retrieve them
+    Provide getters to retrieve them
 
 */
 class Book {
-    #title
-    #author
-    #pages
-    #year
-    #read
     constructor(title, author, pages, year, read) {
-        this.#title = title;
-        this.#author = author;
-        this.#pages = pages;
-        this.#year = year;
-        this.#read = read;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.year = year;
+        this.read = read;
     }
 
     getTitle() {
-        return this.#title
+        return this.title
     }
 
     getAuthor() {
-        return this.#author
+        return this.author
     }
 
     getPages() {
-        return this.#pages
+        return this.pages
     }
 
     getYear() {
-        return this.#year
+        return this.year
     }
 
     getRead() {
-        return this.#read
+        return this.read
     }
 
 }
@@ -62,12 +57,14 @@ read.addEventListener("click", () => {
 
 const inputs = document.querySelectorAll('.book-input');
 const inputsForm = document.querySelector(".inputs-container");
+
+// Library array stores the book objects used to create the book cards
 let myLibrary = [
     {
         title: "Crime and Punishment",
         author: "Fyodor Dostoevsky",
         pages: 537,
-        year: 1953,
+        year: 1866,
         read: false
     }
 ];
@@ -112,12 +109,12 @@ function render() {
 
     for (let i=0; i < myLibrary.length; i++)
     {
-        createBook(myLibrary[i]);
+        createBookCard(myLibrary[i]);
     }
 }
 
-// Creates a book div and adds the info users provide into the card.
-function createBook(item) {
+// Creates a book card div and adds the info users provide into the card.
+function createBookCard(item) {
     const lib = document.querySelector(".lib-container");
 
     const card = document.createElement('div');
@@ -131,7 +128,11 @@ function createBook(item) {
     card.className = 'book';
     card.classList.add('book');
     card.setAttribute("id", myLibrary.indexOf(item)); // sets the id of card to the index of the book in the library array
-    
+
+    /*
+     * Replace properties of Book object from constructor with getter methods
+     * for retrieving values of object's properties
+    */
     titleDiv.textContent = `${item.title}`;
     titleDiv.classList.add('title');
     card.appendChild(titleDiv);
@@ -150,7 +151,7 @@ function createBook(item) {
     
     readBtn.setAttribute("id", "readBtn");
     card.appendChild(readBtn);
-    if(item.read == true) {
+    if(item.read) {
         readBtn.textContent = "Read";
         readBtn.style.backgroundColor = '#1CD867';
     } else {
@@ -161,7 +162,7 @@ function createBook(item) {
     // add click listener so that the button changes to Read or Not Read
     readBtn.addEventListener("click", () => {
         item.read = !item.read;
-        if(item.read == true) {
+        if(item.read) {
             readBtn.textContent = "Read";
             readBtn.style.backgroundColor = '#1CD867';
         } else {
