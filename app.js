@@ -6,32 +6,38 @@
 
 */
 class Book {
+    #title
+    #author
+    #pages
+    #year
+    #read
+    
     constructor(title, author, pages, year, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.year = year;
-        this.read = read;
+        this.#title = title;
+        this.#author = author;
+        this.#pages = pages;
+        this.#year = year;
+        this.#read = read;
     }
 
-    getTitle() {
-        return this.title
+    get title() {
+        return this.#title
     }
 
-    getAuthor() {
-        return this.author
+    get author() {
+        return this.#author
     }
 
-    getPages() {
-        return this.pages
+    get pages() {
+        return this.#pages
     }
 
-    getYear() {
-        return this.year
+    get year() {
+        return this.#year
     }
 
-    getRead() {
-        return this.read
+    get read() {
+        return this.#read
     }
 
 }
